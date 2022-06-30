@@ -5,10 +5,10 @@ const db = new QuickDB();
 module.exports = {
   name: 'map',
   async execute(interaction) {
-     const user = interaction.user.id;
+    const user = interaction.user.id;
 
-     const plain = await db.get(`${user}.plain`) || false;
-     const village_st = await db.get(`${user}.village_st`) || true;
+    const plain = await db.get(`${user}.plain`) || false;
+    const village_st = await db.get(`${user}.village_st`) || true;
     const village_ru = await db.get(`${user}.village_ru`) || false;
     const dessert = await db.get(`${user}.dessert`) || false;
     const tundra = await db.get(`${user}.tundra`) || false;
