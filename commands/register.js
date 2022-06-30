@@ -10,9 +10,9 @@ module.exports = {
     const skip = interaction.user.id
     const register = await db.get(`${interaction.user.id}.register`) || 0;
     if(register === 0){
-      await interaction.reply({ content: `Zoe: Hey, thank you for registering ${interaction.user.tag}` })
-      await interaction.followUp({ content: 'Zoe: You should be able to see your `/profile` now' })
-      await interaction.followUp({ content: 'Zoe: Now, have fun adventuring!' })
+      await interaction.reply({ content: `**[Zoe]**: Hey, thank you for registering ${interaction.user.tag}` })
+      await interaction.followUp({ content: '**[Zoe]**: You should be able to see your `/profile` now' })
+      await interaction.followUp({ content: '**[Zoe]**: Now, have fun adventuring!' })
       await db.set(`${skip}.register`, 1)
       await db.set(`${skip}.balance`, 0)
       await db.set(`${skip}.level`, 1)
