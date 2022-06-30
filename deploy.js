@@ -1,8 +1,8 @@
-const fs = require('node:fs');
-const path = requite('node:path');
+const fs = require('fs');
+const path = require('path');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const REST = require('@discordjs/rest');
-const ROUTES = require('discord-api-types/v9');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
 
 const { ClientId , GuildId , token} = require('./config.json')
 
@@ -14,9 +14,10 @@ for (const file of CommandFile) {
 	const FilePath = path.join(CommandPath, file);
 	const command = require(FilePath);
 	commands.push(command.data.toJSON());
-}
+};
+
 const rest = new REST({ version:9 }).setToken(process.env.token);
 
-rest.put(ROUTES.applicationGuildCommands(process.env.ClientId , process.env.GuildId), { body: commands })
+rest.put(Routes.applicationGuildCommands(process.env.ClientId , process.env.GuildId), { body: commands })
 .then(() => console.log('Commands has been registered'))
 .catch(console.error);

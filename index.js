@@ -16,21 +16,35 @@ for (const file of CommandFile) {
   client.commands.set(command.data.name, command);
 }
 
+const EventPath = path.join(__dirname, 'events');
+const EventFiles = fs.readdirSync(EventPath).filter(file => file.endsWith('.js'));
+
+for (const file of EventFiles) {
+    const FilePath = path.join(EventPath, file)
+    const event = require(FilePath);
+if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 client.once('ready', () =>{
-  console.log('UltimateRPG has online')
+   //check out events/read.js for console log
 });
 
 client.on('interactionCreate' , async interaction => {
   if(!interaction.isCommand()) return;
 
-  const command = client.commands.get(interaction.CommandName);
-  if(!command) return;
-  try {
-    await command.execute(interaction);
-  } catch (error) {
-      console.error(error)
-      await interaction.reply({ content: 'There is an error after executing this command', ephemeral: true});
-  }
+  const command = client.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
 });
 
 // will be changed later for fork template
