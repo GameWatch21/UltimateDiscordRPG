@@ -1,7 +1,8 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config.json')
+// const { token } = require('./config.json');
+// const testSchema = require('./schema/test-schema.js')
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -29,7 +30,6 @@ for (const file of EventFiles) {
   }
 }
 client.once('ready', () => {
-  //check out events/read.js for console log
 });
 
 client.on('interactionCreate', async interaction => {

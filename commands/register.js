@@ -8,6 +8,7 @@ module.exports = {
     .setDescription('Start your adventure, from here'),
   async execute(interaction) {
     const skip = interaction.user.id
+    const globalCount = await db.get(`registeredUser`)
     const register = await db.get(`${interaction.user.id}.register`) || 0;
     if (register === 0) {
       await interaction.reply({ content: `**[Zoe]**: Hey, thank you for registering ${interaction.user.tag}` })
@@ -19,6 +20,7 @@ module.exports = {
       await db.set(`${skip}.job`, 'None')
       await db.set(`${skip}.exp`, 0)
       await db.set(`${skip}.energy`, 0)
+      await db.add(`registeredUser`, 1)
     }
     if (register === 1) {
       await interaction.reply(`Oh, it's look like you already registered, check your \`/profile\``);

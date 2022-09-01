@@ -4,7 +4,8 @@
   "description": "Creating the old-rpg game on discord",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run deploy.js"
   },
   "keywords": [],
   "author": "GameWatch21",
@@ -16,8 +17,13 @@
     "better-sqlite3": "^7.5.3",
     "discord-api-types": "^0.35.0",
     "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1",
+    "eximport-bridge": "^2.0.0",
     "fs": "^0.0.1-security",
+    "import-export": "^1.0.1",
+    "mongoose": "^6.5.3",
     "path": "^0.12.7",
-    "quick.db": "^9.0.5"
+    "quick.db": "^9.0.5",
+    "string-progressbar": "^1.0.4"
   }
 }
