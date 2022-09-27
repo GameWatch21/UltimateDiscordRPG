@@ -7,6 +7,7 @@ module.exports = {
   async execute(interaction) {
     const user = interaction.user.id;
 
+    const grassland = await db.get(`${user}.grassland`) || false;
     const plain = await db.get(`${user}.plain`) || false;
     const village_st = await db.get(`${user}.village_st`) || true;
     const village_ru = await db.get(`${user}.village_ru`) || false;
