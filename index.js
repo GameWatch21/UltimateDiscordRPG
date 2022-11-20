@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, Intents } = require('discord.js');
-// const { token } = require('./config.json');
-// const testSchema = require('./schema/test-schema.js')
+const { token } = require('./config.json');
 require('dotenv').config()
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -48,5 +47,4 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-// will be changed later for fork template
 client.login(process.env.token)
